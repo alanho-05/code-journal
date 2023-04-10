@@ -37,25 +37,24 @@
           <div class="column-half">
             <img src="images/placeholder-image-square.jpg" class="border-radius">
           </div>
-          <div class="column-half border-radius">
+          <div class="column-half col">
             <label for="title">Title</label>
-            <input type="text" id="title" required>
-            <label for="img-url">Photo URL</label>
-            <input type="url" id="img-url">
+            <input type="text" id="title" class="border-radius border-color inputs" required>
+            <label for="img-url" class="top-padding">Photo URL</label>
+            <input type="url" id="img-url" class="border-radius border-color inputs">
           </div>
         </div>
         <div class="row">
-          <div class="column-full">
-            <label for="notes">Notes</label>
-            <textarea id="notes" name="notes" rows="5" class="border-radius"></textarea>
+          <div class="column-full col">
+            <label for="notes" class="top-padding">Notes</label>
+            <textarea id="notes" name="notes" rows="6" class="border-radius border-color inputs"></textarea>
           </div>
         </div>
         <div class="row">
-          <div class="column-full">
-            <input type="submit" value="Save" class="purple white-txt border-radius">
+          <div class="column-full end">
+            <button type="submit" class="purple white-txt border-radius">SAVE</button>
           </div>
         </div>
-
       </form>
     </div>
     <div data-view="entries" class="hidden"></div>
