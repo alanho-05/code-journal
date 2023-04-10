@@ -9,3 +9,15 @@
 .header {
   font-weight: 350;
 }
+
+.border-radius {
+  border-radius: 0.3rem;
+}
+
+img {
+  width: 100%;
+}
+
+button {
+  border: none;
+}
