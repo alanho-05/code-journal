@@ -64,3 +64,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
     $uList.appendChild(entries);
   }
 });
+
+const $noEntries = document.querySelector('#no-entries');
+
+function toggleNoEntries() {
+  if (data.entries.length === 0) {
+    $noEntries.classList.add('hidden');
+  } else {
+    $noEntries.classList.remove('hidden');
+  }
+}
+
+toggleNoEntries();
