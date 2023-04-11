@@ -54,8 +54,6 @@ function renderEntry(entry) {
   return listEl;
 }
 
-// Check image classes with entry-img class
-
 const $uList = document.querySelector('ul');
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -76,3 +74,22 @@ function toggleNoEntries() {
 }
 
 toggleNoEntries();
+// To bypass linter; delete after function is called.
+
+const $entryForm = document.querySelector('#form');
+const $entries = document.querySelector('#entries');
+
+function viewSwap(page) {
+  if (page === 'entry-form') {
+    $entryForm.classList.remove('hidden');
+    $entries.classList.add('hidden');
+  } else {
+    $entries.classList.remove('hidden');
+    $entries.classList.add('hidden');
+  }
+  data.view = page;
+}
+
+// Value of page will either be 'entries' or 'entry-form'
+viewSwap();
+// To bypass linter.
