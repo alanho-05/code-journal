@@ -54,5 +54,13 @@ function renderEntry(entry) {
   return listEl;
 }
 
-renderEntry(data.entries[0]);
 // Check image classes with entry-img class
+
+const $uList = document.querySelector('ul');
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    const entries = renderEntry(data.entries[i]);
+    $uList.appendChild(entries);
+  }
+});
