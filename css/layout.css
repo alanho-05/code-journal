@@ -31,4 +31,16 @@
   .column-half {
     width: 50%;
   }
+
+  img.entry-img {
+    padding-top: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  li {
+    padding-top: 2rem;
+  }
 }
