@@ -15,10 +15,11 @@
 }
 
 .inputs {
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: sans-serif;
   font-weight: 300;
   padding: 0.5rem 0 0.5rem 0.7rem;
+  line-height: 2.3rem;
 }
 
 .top-padding {
@@ -31,7 +32,7 @@
 
 .border-color:focus {
   outline: none;
-  border: solid 0.15rem #552b80;
+  border: solid 0.2rem #552b80;
 }
 
 .col {
@@ -44,6 +45,14 @@
   justify-content: end;
 }
 
+.letter-spacing {
+  letter-spacing: 0.03rem;
+}
+
+.line-height {
+  line-height: 0.05rem;
+}
+
 img {
   width: 100%;
 }
@@ -54,7 +63,6 @@ button {
   padding: 0.5rem 1rem;
   border-style: none;
   font-size: 1rem;
-  letter-spacing: 0.03rem;
 }
 
 button:hover {
