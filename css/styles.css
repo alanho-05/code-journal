@@ -14,6 +14,11 @@
   border-radius: 0.3rem;
 }
 
+.content-centered {
+  display: flex;
+  justify-content: center;
+}
+
 .inputs {
   font-size: 2rem;
   font-family: sans-serif;
