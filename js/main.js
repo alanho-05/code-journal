@@ -27,6 +27,7 @@ $form.addEventListener('submit', function (event) {
 
 function renderEntry(entry) {
   const listEl = document.createElement('li');
+  listEl.setAttribute('data-entry-id', entry.entryId);
 
   const outerDiv = document.createElement('div');
   outerDiv.setAttribute('class', 'row');
@@ -42,8 +43,14 @@ function renderEntry(entry) {
   const txtDiv = document.createElement('div');
   txtDiv.setAttribute('class', 'column-half');
 
+  const titleDiv = document.createElement('div');
+  titleDiv.setAttribute('class', 'entry-title-alignment');
+
   const entryTitle = document.createElement('h3');
   entryTitle.textContent = entry.title;
+
+  const editIcon = document.createElement('i');
+  editIcon.setAttribute('class', 'fa-solid fa-pen');
 
   const entryTxt = document.createElement('p');
   entryTxt.textContent = entry.notes;
@@ -52,7 +59,9 @@ function renderEntry(entry) {
   outerDiv.appendChild(imgDiv);
   imgDiv.appendChild(imgEl);
   outerDiv.appendChild(txtDiv);
-  txtDiv.appendChild(entryTitle);
+  txtDiv.appendChild(titleDiv);
+  titleDiv.appendChild(entryTitle);
+  titleDiv.appendChild(editIcon);
   txtDiv.appendChild(entryTxt);
 
   return listEl;

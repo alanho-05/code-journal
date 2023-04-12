@@ -24,6 +24,16 @@
   align-items: center;
 }
 
+.entry-title-alignment {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+i {
+  font-size: 1.5rem;
+}
+
 .nav-padding {
   margin-left: 2rem;
 }
@@ -129,11 +139,13 @@ p {
   font-weight: 400;
   line-height: 2rem;
   white-space: pre-wrap;
+  flex-basis: 100%;
 }
 
 h3 {
   font-size: 2rem;
   font-family: sans-serif;
+  max-width: 90%;
 }
 
 h2 {
