@@ -80,7 +80,7 @@ const $entryForm = document.querySelector('#form');
 const $entries = document.querySelector('.entries');
 
 function viewSwap(event) {
-  if (event.target.id === 'entry-form') {
+  if (event.target.id === 'new-entry') {
     $entryForm.classList.remove('hidden');
     $entries.classList.add('hidden');
   } else {
@@ -89,7 +89,12 @@ function viewSwap(event) {
   }
   data.view = event.target.id;
 }
-// Value of page will either be 'entries' or 'entry-form'
+// viewSwap function being called in event listeners. Button New with the ID='new-entry' will trigger if statement.
 
-const $navEntries = document.querySelector('a');
+const $navEntries = document.querySelector('#entries');
 $navEntries.addEventListener('click', viewSwap);
+// Listening for click event on Entries navbar to switch view to Entries page.
+
+const $newEntry = document.querySelector('#new-entry');
+$newEntry.addEventListener('click', viewSwap);
+// Listening for click event on NEW anchor to switch view to New Entry page.

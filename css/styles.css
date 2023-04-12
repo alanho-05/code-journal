@@ -28,12 +28,24 @@
   margin-left: 2rem;
 }
 
+.bar-margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 a:link,
 a:visited,
 a:hover,
 a:active {
   text-decoration: none;
   color: white;
+  font-size: 1.3rem;
+}
+
+#new-entry {
+  background-color: #552b80;
+  padding: 0.7rem 1rem;
+  font-size: 1.3rem;
 }
 
 .inputs {
@@ -65,6 +77,12 @@ a:active {
 .end {
   display: flex;
   justify-content: end;
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .letter-spacing {
@@ -116,4 +134,8 @@ p {
 h3 {
   font-size: 2rem;
   font-family: sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
 }
