@@ -57,6 +57,7 @@ function renderEntry(entry) {
 
   return listEl;
 }
+// Creating the DOM tree layouts for entries. Ready to be appended to unordered list.
 
 const $uList = document.querySelector('ul');
 
