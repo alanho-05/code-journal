@@ -21,7 +21,7 @@ $form.addEventListener('submit', function (event) {
   $form.reset();
 
   $uList.prepend(renderEntry(entry));
-  viewSwap(event);
+  viewSwap('entries');
   toggleNoEntries();
 });
 
