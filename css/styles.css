@@ -30,7 +30,6 @@
 
 .bar-margin {
   margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
 a:link,
@@ -42,7 +41,7 @@ a:active {
   font-size: 1.3rem;
 }
 
-#new-entry {
+#entry-form {
   background-color: #552b80;
   padding: 0.7rem 1rem;
   font-size: 1.3rem;

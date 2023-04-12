@@ -65,7 +65,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
     const entries = renderEntry(data.entries[i]);
     $uList.appendChild(entries);
   }
+  viewSwap(data.view);
+  toggleNoEntries();
 });
+// Loops through data.entries array and uses renderEntry() to generate a DOM tree with content and append it to the unordered list ($uList).
 
 const $noEntries = document.querySelector('#no-entries');
 
@@ -80,22 +83,26 @@ function toggleNoEntries() {
 const $entryForm = document.querySelector('#form');
 const $entries = document.querySelector('.entries');
 
-function viewSwap(event) {
-  if (event.target.id === 'new-entry') {
+function viewSwap(pageName) {
+  if (pageName === 'entry-form') {
     $entryForm.classList.remove('hidden');
     $entries.classList.add('hidden');
   } else {
     $entries.classList.remove('hidden');
     $entryForm.classList.add('hidden');
   }
-  data.view = event.target.id;
+  data.view = pageName;
 }
-// viewSwap function being called in event listeners. Button New with the ID='new-entry' will trigger if statement.
+// viewSwap function is being passed a string in order to decide which page to show.
 
 const $navEntries = document.querySelector('#entries');
-$navEntries.addEventListener('click', viewSwap);
-// Listening for click event on Entries navbar to switch view to Entries page.
+$navEntries.addEventListener('click', function (event) {
+  viewSwap(event.target.id);
+});
+// Listening for click event on Entries navbar to switch view to Entries page. Calls the viewSwap function with the argument 'entries'.
 
-const $newEntry = document.querySelector('#new-entry');
-$newEntry.addEventListener('click', viewSwap);
-// Listening for click event on NEW anchor to switch view to New Entry page.
+const $newEntry = document.querySelector('#entry-form');
+$newEntry.addEventListener('click', function (event) {
+  viewSwap(event.target.id);
+});
+// Listening for click event on NEW anchor to switch view to New Entry page. Calls the viewSwap function with the argument 'entry-form'
