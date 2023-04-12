@@ -67,9 +67,9 @@ const $noEntries = document.querySelector('#no-entries');
 
 function toggleNoEntries() {
   if (data.entries.length === 0) {
-    $noEntries.classList.add('hidden');
-  } else {
     $noEntries.classList.remove('hidden');
+  } else {
+    $noEntries.classList.add('hidden');
   }
 }
 
@@ -77,19 +77,19 @@ toggleNoEntries();
 // To bypass linter; delete after function is called.
 
 const $entryForm = document.querySelector('#form');
-const $entries = document.querySelector('#entries');
+const $entries = document.querySelector('.entries');
 
-function viewSwap(page) {
-  if (page === 'entry-form') {
+function viewSwap(event) {
+  if (event.target.id === 'entry-form') {
     $entryForm.classList.remove('hidden');
     $entries.classList.add('hidden');
   } else {
     $entries.classList.remove('hidden');
-    $entries.classList.add('hidden');
+    $entryForm.classList.add('hidden');
   }
-  data.view = page;
+  data.view = event.target.id;
 }
-
 // Value of page will either be 'entries' or 'entry-form'
-viewSwap();
-// To bypass linter.
+
+const $navEntries = document.querySelector('a');
+$navEntries.addEventListener('click', viewSwap);

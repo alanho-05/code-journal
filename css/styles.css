@@ -19,6 +19,23 @@
   justify-content: center;
 }
 
+.aligned-centered {
+  display: flex;
+  align-items: center;
+}
+
+.nav-padding {
+  margin-left: 2rem;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: white;
+}
+
 .inputs {
   font-size: 2rem;
   font-family: sans-serif;
