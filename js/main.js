@@ -19,6 +19,10 @@ $form.addEventListener('submit', function (event) {
   data.entries.unshift(entry);
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+
+  $uList.prepend(renderEntry(entry));
+  viewSwap(event);
+  toggleNoEntries();
 });
 
 function renderEntry(entry) {
@@ -72,9 +76,6 @@ function toggleNoEntries() {
     $noEntries.classList.add('hidden');
   }
 }
-
-toggleNoEntries();
-// To bypass linter; delete after function is called.
 
 const $entryForm = document.querySelector('#form');
 const $entries = document.querySelector('.entries');
