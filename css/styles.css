@@ -34,6 +34,10 @@ i {
   font-size: 1.5rem;
 }
 
+i:hover {
+  cursor: pointer;
+}
+
 .nav-padding {
   margin-left: 2rem;
 }
