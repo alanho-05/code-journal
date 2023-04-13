@@ -32,10 +32,12 @@
 
 i {
   font-size: 1.5rem;
+  color: #552b80;
 }
 
 i:hover {
   cursor: pointer;
+  color: black;
 }
 
 .nav-padding {
