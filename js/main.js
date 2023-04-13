@@ -1,5 +1,8 @@
 const $urlInput = document.querySelector('#img-url');
 const $img = document.querySelector('img');
+const $title = document.querySelector('#title');
+const $textArea = document.querySelector('textarea');
+const $entryPageHeader = document.querySelector('h2');
 
 $urlInput.addEventListener('input', function (event) {
   $img.setAttribute('src', event.target.value);
@@ -79,6 +82,24 @@ document.addEventListener('DOMContentLoaded', function (event) {
   toggleNoEntries();
 });
 // Loops through data.entries array and uses renderEntry() to generate a DOM tree with content and append it to the unordered list ($uList).
+
+$uList.addEventListener('click', function (event) {
+  viewSwap('entry-form');
+
+  const $entryLi = event.target.closest('li');
+
+  for (let i = 0; i < data.entries.length; i++) {
+    if (Number($entryLi.getAttribute('data-entry-id')) === data.entries[i].entryId) {
+      data.editing = data.entries[i];
+    }
+  }
+
+  $img.setAttribute('src', data.editing.imgURL);
+  $title.value(data.editing.title);
+  $textArea.value(data.editing.notes);
+
+  $entryPageHeader.textContent = 'Edit Entry';
+});
 
 const $noEntries = document.querySelector('#no-entries');
 
