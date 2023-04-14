@@ -150,6 +150,7 @@ function toggleNoEntries() {
 }
 
 const $deleteButton = document.querySelector('#delete-button');
+// let toggleDeleteModal = false;
 
 function toggleDeleteButton() {
   if (data.editing === null) {
@@ -158,6 +159,13 @@ function toggleDeleteButton() {
     $deleteButton.classList.remove('hidden');
   }
 }
+
+// $deleteButton.addEventListener('click', function (event) {
+//   toggleDeleteModal = !toggleDeleteModal;
+//   if (toggleModal === true) {
+
+//   }
+// });
 
 const $entryForm = document.querySelector('#form');
 const $entries = document.querySelector('.entries');
