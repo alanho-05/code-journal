@@ -135,6 +135,7 @@ $uList.addEventListener('click', function (event) {
 
   $entryPageHeader.textContent = 'Edit Entry';
 
+  toggleDeleteButton();
   viewSwap('entry-form');
 });
 
@@ -145,6 +146,16 @@ function toggleNoEntries() {
     $noEntries.classList.remove('hidden');
   } else {
     $noEntries.classList.add('hidden');
+  }
+}
+
+const $deleteButton = document.querySelector('#delete-button');
+
+function toggleDeleteButton() {
+  if (data.editing === null) {
+    $deleteButton.classList.add('hidden');
+  } else {
+    $deleteButton.classList.remove('hidden');
   }
 }
 
@@ -165,12 +176,16 @@ function viewSwap(pageName) {
 
 const $navEntries = document.querySelector('#entries');
 $navEntries.addEventListener('click', function (event) {
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
+  data.editing = null;
   viewSwap(event.target.id);
 });
 // Listening for click event on Entries navbar to switch view to Entries page. Calls the viewSwap function with the argument 'entries'.
 
 const $newEntry = document.querySelector('#entry-form');
 $newEntry.addEventListener('click', function (event) {
+  toggleDeleteButton();
   viewSwap(event.target.id);
 });
 // Listening for click event on NEW anchor to switch view to New Entry page. Calls the viewSwap function with the argument 'entry-form'

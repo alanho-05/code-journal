@@ -48,10 +48,10 @@ i:hover {
   margin-top: 1rem;
 }
 
-a:link,
-a:visited,
-a:hover,
-a:active {
+.a-tag:link,
+.a-tag:visited,
+.a-tag:hover,
+.a-tag:active {
   text-decoration: none;
   color: white;
   font-size: 1.3rem;
@@ -89,9 +89,10 @@ a:active {
   flex-direction: column;
 }
 
-.end {
+.content-start {
   display: flex;
-  justify-content: end;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .between {
@@ -110,6 +111,15 @@ a:active {
 
 .entry-img {
   padding-top: 1.5rem;
+}
+
+#delete-button {
+  color: red;
+  font-size: 1.3rem;
+}
+
+#save {
+  margin-left: auto;
 }
 
 img {
