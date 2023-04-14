@@ -121,8 +121,6 @@ $uList.addEventListener('click', function (event) {
     return;
   }
 
-  viewSwap('entry-form');
-
   const $entryLi = event.target.closest('li');
   for (let i = 0; i < data.entries.length; i++) {
     if (Number($entryLi.getAttribute('data-entry-id')) === data.entries[i].entryId) {
@@ -136,7 +134,8 @@ $uList.addEventListener('click', function (event) {
   $textArea.value = data.editing.notes;
 
   $entryPageHeader.textContent = 'Edit Entry';
-  // Not showing up as Edit Entry
+
+  viewSwap('entry-form');
 });
 
 const $noEntries = document.querySelector('#no-entries');
