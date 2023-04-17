@@ -4,6 +4,8 @@ const $title = document.querySelector('#title');
 const $textArea = document.querySelector('textarea');
 const $entryPageHeader = document.querySelector('#title-change');
 const $imgText = document.querySelector('#img-url');
+const $uList = document.querySelector('ul');
+const $ulChild = $uList.childNodes;
 
 $urlInput.addEventListener('input', function (event) {
   $img.setAttribute('src', event.target.value);
@@ -35,8 +37,6 @@ $form.addEventListener('submit', function (event) {
       notes: $form.elements.notes.value,
       entryId: data.editing.entryId
     };
-
-    const $ulChild = $uList.childNodes;
 
     for (let i = 0; i < data.entries.length; i++) {
       if (data.editing.entryId === data.entries[i].entryId) {
@@ -103,8 +103,6 @@ function renderEntry(entry) {
 }
 // Creating the DOM tree layouts for entries. Ready to be appended to unordered list.
 
-const $uList = document.querySelector('ul');
-
 document.addEventListener('DOMContentLoaded', function (event) {
   for (let i = 0; i < data.entries.length; i++) {
     const entries = renderEntry(data.entries[i]);
@@ -158,7 +156,36 @@ $noButton.addEventListener('click', function (event) {
   }
 });
 
-// Shows confirmation modal when the user clicks Delte Entry button.
+// Shows confirmation modal when the user clicks Delete Entry button on edit page.
+
+const $deleteConfirm = document.querySelector('#delete-confirm');
+
+$deleteConfirm.addEventListener('click', function (event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+
+  // Removes selected data entry from stored entries.
+
+  for (let node = 0; node < $ulChild.length; node++) {
+    if ($ulChild[node].tagName === 'LI' && Number($ulChild[node].dataset.entryId) === data.editing.entryId) {
+      $ulChild[node].remove();
+    }
+  }
+
+  // Removes selected data entry li element from the DOM tree. Entry li is selected from ul's childNodes property.
+
+  toggleNoEntries();
+
+  toggleModal = !toggleModal;
+  if (toggleModal === false) {
+    $modalOverlay.className = 'row centered fixed overlay hidden';
+  }
+
+  viewSwap('entries');
+});
 
 const $noEntries = document.querySelector('#no-entries');
 
