@@ -7,6 +7,8 @@ const $imgText = document.querySelector('#img-url');
 const $uList = document.querySelector('ul');
 const $ulChild = $uList.childNodes;
 
+// $ulChild is a nodeList of $uList's direct children
+
 $urlInput.addEventListener('input', function (event) {
   $img.setAttribute('src', event.target.value);
 });
@@ -49,6 +51,7 @@ $form.addEventListener('submit', function (event) {
         }
       }
     }
+
     $entryPageHeader.textContent = 'New Entry';
     data.editing = null;
   }
