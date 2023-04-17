@@ -48,13 +48,22 @@ i:hover {
   margin-top: 1rem;
 }
 
-a:link,
-a:visited,
-a:hover,
-a:active {
+.nav-page:link,
+.nav-page:visited,
+.nav-page:hover,
+.nav-page:active {
   text-decoration: none;
   color: white;
   font-size: 1.3rem;
+}
+
+a#delete-button:link,
+a#delete-button:visited,
+a#delete-button:hover,
+a#delete-button:active {
+  color: red;
+  font-size: 1.3rem;
+  margin-right: auto;
 }
 
 #entry-form {
@@ -91,7 +100,8 @@ a:active {
 
 .end {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  align-items: baseline;
 }
 
 .between {
@@ -156,4 +166,58 @@ h3 {
 
 h2 {
   font-size: 2rem;
+}
+
+/* Modal styles below */
+.modal-row {
+  display: flex;
+  justify-content: center;
+}
+
+.overlay {
+  background-color: rgb(0 0 0 / 85%);
+}
+
+.no-button {
+  width: 8rem;
+  height: 3.5rem;
+  border-radius: 0.4rem;
+  background-color: #b6b6b6;
+  font-size: 1.2rem;
+}
+
+#delete-confirm {
+  width: 8rem;
+  height: 3.5rem;
+  border-radius: 0.4rem;
+  background-color: #dc2625;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.modal-layout {
+  background-color: white;
+  padding: 2rem;
+}
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-row > h3 {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.modal-input {
+  justify-content: space-between;
 }

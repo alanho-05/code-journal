@@ -4,6 +4,10 @@ const $title = document.querySelector('#title');
 const $textArea = document.querySelector('textarea');
 const $entryPageHeader = document.querySelector('#title-change');
 const $imgText = document.querySelector('#img-url');
+const $uList = document.querySelector('ul');
+const $ulChild = $uList.childNodes;
+
+// $ulChild is a nodeList of $uList's direct children
 
 $urlInput.addEventListener('input', function (event) {
   $img.setAttribute('src', event.target.value);
@@ -36,8 +40,6 @@ $form.addEventListener('submit', function (event) {
       entryId: data.editing.entryId
     };
 
-    const $ulChild = $uList.childNodes;
-
     for (let i = 0; i < data.entries.length; i++) {
       if (data.editing.entryId === data.entries[i].entryId) {
         data.entries.splice(i, 1, editedEntry);
@@ -49,6 +51,7 @@ $form.addEventListener('submit', function (event) {
         }
       }
     }
+
     $entryPageHeader.textContent = 'New Entry';
     data.editing = null;
   }
@@ -103,8 +106,6 @@ function renderEntry(entry) {
 }
 // Creating the DOM tree layouts for entries. Ready to be appended to unordered list.
 
-const $uList = document.querySelector('ul');
-
 document.addEventListener('DOMContentLoaded', function (event) {
   for (let i = 0; i < data.entries.length; i++) {
     const entries = renderEntry(data.entries[i]);
@@ -134,8 +135,59 @@ $uList.addEventListener('click', function (event) {
   $textArea.value = data.editing.notes;
 
   $entryPageHeader.textContent = 'Edit Entry';
+  $delete.classList.remove('hidden');
 
   viewSwap('entry-form');
+});
+
+let toggleModal = false;
+const $delete = document.querySelector('#delete-button');
+const $noButton = document.querySelector('.no-button');
+const $modalOverlay = document.querySelector('#modal');
+
+$delete.addEventListener('click', function (event) {
+  toggleModal = !toggleModal;
+  if (toggleModal === true) {
+    $modalOverlay.className = 'row centered fixed overlay';
+  }
+});
+
+$noButton.addEventListener('click', function (event) {
+  toggleModal = !toggleModal;
+  if (toggleModal === false) {
+    $modalOverlay.className = 'row centered fixed overlay hidden';
+  }
+});
+
+// Shows confirmation modal when the user clicks Delete Entry button on edit page.
+
+const $deleteConfirm = document.querySelector('#delete-confirm');
+
+$deleteConfirm.addEventListener('click', function (event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+
+  // Removes selected data entry from stored entries.
+
+  for (let node = 0; node < $ulChild.length; node++) {
+    if ($ulChild[node].tagName === 'LI' && Number($ulChild[node].dataset.entryId) === data.editing.entryId) {
+      $ulChild[node].remove();
+    }
+  }
+
+  // Removes selected data entry li element from the DOM tree. Entry li is selected from ul's childNodes property.
+
+  toggleNoEntries();
+
+  toggleModal = !toggleModal;
+  if (toggleModal === false) {
+    $modalOverlay.className = 'row centered fixed overlay hidden';
+  }
+
+  viewSwap('entries');
 });
 
 const $noEntries = document.querySelector('#no-entries');
@@ -166,11 +218,15 @@ function viewSwap(pageName) {
 const $navEntries = document.querySelector('#entries');
 $navEntries.addEventListener('click', function (event) {
   viewSwap(event.target.id);
+  data.editing = null;
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
 });
 // Listening for click event on Entries navbar to switch view to Entries page. Calls the viewSwap function with the argument 'entries'.
 
 const $newEntry = document.querySelector('#entry-form');
 $newEntry.addEventListener('click', function (event) {
+  $delete.classList.add('hidden');
   viewSwap(event.target.id);
 });
 // Listening for click event on NEW anchor to switch view to New Entry page. Calls the viewSwap function with the argument 'entry-form'

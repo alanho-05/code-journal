@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
   <link rel="icon" href="images/favicon.ico">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <header class="purple">
     <div class="container white-txt">
       <div class="row">
         <div class="column-full aligned-centered">
           <h2 class="header">Code Journal</h2>
-          <a href="#" id="entries" class="nav-padding">Entries</a>
+          <a href="#" id="entries" class="nav-padding nav-page">Entries</a>
         </div>
       </div>
     </div>
@@ -40,7 +39,8 @@
           </div>
           <div class="column-half col">
             <label for="title">Title</label>
-            <input type="text" id="title" class="border-radius border-color inputs letter-spacing" name="title" required>
+            <input type="text" id="title" class="border-radius border-color inputs letter-spacing" name="title"
+              required>
             <label for="img-url" class="top-padding">Photo URL</label>
             <input type="url" id="img-url" class="border-radius border-color inputs letter-spacing" name="url" required>
           </div>
@@ -48,11 +48,13 @@
         <div class="row">
           <div class="column-full col">
             <label for="notes" class="top-padding">Notes</label>
-            <textarea id="notes" name="notes" rows="6" class="border-radius border-color inputs letter-spacing" required></textarea>
+            <textarea id="notes" name="notes" rows="6" class="border-radius border-color inputs letter-spacing"
+              required></textarea>
           </div>
         </div>
         <div class="row">
           <div class="column-full end">
+            <a href="#" id="delete-button" class="hidden">Delete Entry</a>
             <button type="submit" class="purple white-txt border-radius letter-spacing">SAVE</button>
           </div>
         </div>
@@ -62,7 +64,7 @@
       <div class="row bar-margin">
         <div class="column-full between">
           <h2>Entries</h2>
-          <a href="#" id="entry-form" class="border-radius">NEW</a>
+          <a href="#" id="entry-form" class="border-radius nav-page">NEW</a>
         </div>
       </div>
       <div class="row" id="no-entries">
@@ -74,6 +76,17 @@
       </ul>
     </div>
   </main>
+  <div id="modal" class="centered fixed overlay hidden">
+    <div class="modal-layout">
+      <div class="modal-row">
+        <h3>Are you sure you want to delete this entry?</h3>
+      </div>
+      <div class="modal-row modal-input">
+        <button type="button" class="no-button">CANCEL</button>
+        <button type="button" id="delete-confirm">CONFIRM</button>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
