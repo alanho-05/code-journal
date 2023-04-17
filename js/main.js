@@ -134,10 +134,31 @@ $uList.addEventListener('click', function (event) {
   $textArea.value = data.editing.notes;
 
   $entryPageHeader.textContent = 'Edit Entry';
+  $delete.classList.remove('hidden');
 
-  toggleDeleteButton();
   viewSwap('entry-form');
 });
+
+let toggleModal = false;
+const $delete = document.querySelector('#delete-button');
+const $noButton = document.querySelector('.no-button');
+const $modalOverlay = document.querySelector('#modal');
+
+$delete.addEventListener('click', function (event) {
+  toggleModal = !toggleModal;
+  if (toggleModal === true) {
+    $modalOverlay.className = 'row centered fixed overlay';
+  }
+});
+
+$noButton.addEventListener('click', function (event) {
+  toggleModal = !toggleModal;
+  if (toggleModal === false) {
+    $modalOverlay.className = 'row centered fixed overlay hidden';
+  }
+});
+
+// Shows confirmation modal when the user clicks Delte Entry button.
 
 const $noEntries = document.querySelector('#no-entries');
 
@@ -148,24 +169,6 @@ function toggleNoEntries() {
     $noEntries.classList.add('hidden');
   }
 }
-
-const $deleteButton = document.querySelector('#delete-button');
-// let toggleDeleteModal = false;
-
-function toggleDeleteButton() {
-  if (data.editing === null) {
-    $deleteButton.classList.add('hidden');
-  } else {
-    $deleteButton.classList.remove('hidden');
-  }
-}
-
-// $deleteButton.addEventListener('click', function (event) {
-//   toggleDeleteModal = !toggleDeleteModal;
-//   if (toggleModal === true) {
-
-//   }
-// });
 
 const $entryForm = document.querySelector('#form');
 const $entries = document.querySelector('.entries');
@@ -184,16 +187,16 @@ function viewSwap(pageName) {
 
 const $navEntries = document.querySelector('#entries');
 $navEntries.addEventListener('click', function (event) {
+  viewSwap(event.target.id);
+  data.editing = null;
   $img.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  data.editing = null;
-  viewSwap(event.target.id);
 });
 // Listening for click event on Entries navbar to switch view to Entries page. Calls the viewSwap function with the argument 'entries'.
 
 const $newEntry = document.querySelector('#entry-form');
 $newEntry.addEventListener('click', function (event) {
-  toggleDeleteButton();
+  $delete.classList.add('hidden');
   viewSwap(event.target.id);
 });
 // Listening for click event on NEW anchor to switch view to New Entry page. Calls the viewSwap function with the argument 'entry-form'
